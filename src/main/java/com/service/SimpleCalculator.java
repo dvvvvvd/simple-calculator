@@ -2,6 +2,14 @@ package com.service;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * A SimpleCalculator with implements basic arithmetic for two
+ * integer parameters and returns the result as a double.
+ *
+ * @author  Daan van Driel
+ * @version 1.0
+ * @since   2020-12-05
+ */
 @Component
 public class SimpleCalculator {
 
