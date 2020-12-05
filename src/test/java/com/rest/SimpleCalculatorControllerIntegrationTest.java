@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/SimpleCalculatorApp-servlet-test.xml")
 @WebAppConfiguration
-public class SimpleCalculatorControllerTest {
+public class SimpleCalculatorControllerIntegrationTest {
 
     private static final String POST_ADDITION_PATH = "/calculation/add";
 
