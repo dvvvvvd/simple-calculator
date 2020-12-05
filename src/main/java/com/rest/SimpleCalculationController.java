@@ -2,6 +2,7 @@ package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.dto.SimpleCalculationResultDto;
+import com.rest.dto.SimpleCalculationResultFactory;
 import com.service.SimpleCalculator;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class SimpleCalculationController {
 
     private final SimpleCalculator simpleCalculator;
+    private final SimpleCalculationResultFactory simpleCalculationResultFactory;
 
     @PostMapping("add")
     @ResponseBody
