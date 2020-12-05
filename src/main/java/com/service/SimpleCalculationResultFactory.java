@@ -1,6 +1,5 @@
 package com.service;
 
-import com.service.SimpleCalculationResult;
 import org.springframework.stereotype.Component;
 
 @Component

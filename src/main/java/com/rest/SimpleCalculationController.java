@@ -3,8 +3,11 @@ package com.rest;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/calculation", consumes = "application/json", produces = "application/json")
@@ -15,8 +18,7 @@ public class SimpleCalculationController {
 
     @PostMapping("/add")
     @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationAddition(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResult postSimpleCalculationAddition(@RequestBody SimpleCalculationDto simpleCalculationDto) {
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }

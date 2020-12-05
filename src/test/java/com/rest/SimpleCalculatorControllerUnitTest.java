@@ -2,14 +2,13 @@ package com.rest;
 
 import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.rest.dto.SimpleCalculationDto;
-import com.service.SimpleCalculationResult;
-import com.service.SimpleCalculationResultFactory;
 import com.service.SimpleCalculationResultService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import static org.mockito.Mockito.verify;
 
 public class SimpleCalculatorControllerUnitTest {

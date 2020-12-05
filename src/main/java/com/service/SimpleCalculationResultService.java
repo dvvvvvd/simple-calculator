@@ -1,7 +1,5 @@
 package com.service;
 
-import static org.junit.Assert.assertTrue;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

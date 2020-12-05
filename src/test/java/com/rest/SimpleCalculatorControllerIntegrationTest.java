@@ -53,7 +53,6 @@ public class SimpleCalculatorControllerIntegrationTest {
     private static final SimpleCalculationResult DIVISION_RESULT
             = FakeSimpleCalculationResultDtoFactory.create(0.5d);
 
-
     @Autowired
     private WebApplicationContext webApplicationContext;
 
