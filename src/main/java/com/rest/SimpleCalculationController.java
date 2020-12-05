@@ -1,17 +1,34 @@
 package com.rest;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.rest.dto.SimpleCalculationDto;
+import com.rest.dto.SimpleCalculationResultDto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("calculate")
+@RequestMapping
 public class SimpleCalculationController {
 
-    @GetMapping
+    @PostMapping("add")
     @ResponseBody
-    public String getHello() {
-        return "hello";
+    public SimpleCalculationResultDto postSimpleCalculationAddition(SimpleCalculationDto simpleCalculationDto) {
+        return null;
+    }
+
+    @PostMapping("subtract")
+    @ResponseBody
+    public SimpleCalculationResultDto postSimpleCalculationSubtraction(SimpleCalculationDto simpleCalculationDto) {
+        return null;
+    }
+
+    @PostMapping("divide")
+    @ResponseBody
+    public SimpleCalculationResultDto postSimpleCalculationDivision(SimpleCalculationDto simpleCalculationDto) {
+        return null;
+    }
+
+    @PostMapping("multiply")
+    @ResponseBody
+    public SimpleCalculationResultDto postSimpleCalculationMultiplication(SimpleCalculationDto simpleCalculationDto) {
+        return null;
     }
 }
