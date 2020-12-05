@@ -14,7 +14,7 @@ public class SimpleCalculator {
     }
 
     public double multiply(int leftHand, int rightHand) {
-        return 0.0d;
+        return (double) leftHand * (double) rightHand;
     }
 
     public double divide(int leftHand, int rightHand) {
