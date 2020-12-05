@@ -42,4 +42,22 @@ public class SimpleCalculatorTest {
         double result = simpleCalculator.add(1, -1);
         assertEquals(2.0d, result, 0.0d);
     }
+
+    @Test
+    public void divideShouldPerformDivisionForTwoPositiveNumbers() {
+        double result = simpleCalculator.divide(1, 1);
+        assertEquals(1.0d, result, 0.0d);
+    }
+
+    @Test
+    public void divideShouldPerformDivisionForTwoNegativeNumbers() {
+        double result = simpleCalculator.divide(-1, -1);
+        assertEquals(1.0d, result, 0.0d);
+    }
+
+    @Test
+    public void divideShouldPerformDivisionForOnePositiveAndOneNegativeNumbers() {
+        double result = simpleCalculator.divide(1, -1);
+        assertEquals(-1.0d, result, 0.0d);
+    }
 }
