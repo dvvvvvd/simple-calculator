@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class SimpleCalculator {
 
     public double add(int leftHand, int rightHand) {
-        return 0.0d;
+        return (double) leftHand + (double) rightHand;
     }
 
     public double subtract(int leftHand, int rightHand) {

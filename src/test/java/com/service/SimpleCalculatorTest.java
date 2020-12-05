@@ -21,7 +21,7 @@ public class SimpleCalculatorTest {
 
     @Test
     public void addShouldPerformAdditionForOnePositiveAndOneNegativeNumbers() {
-        double result = simpleCalculator.add(1, 1);
+        double result = simpleCalculator.add(1, -1);
         assertEquals(0.0d, result, 0.0d);
     }
 
