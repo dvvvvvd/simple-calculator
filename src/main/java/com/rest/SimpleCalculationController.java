@@ -25,20 +25,23 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationSubtraction(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
-        return null;
+        return simpleCalculationResultService.createResultFromSubtraction(
+                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
 
     @PostMapping("divide")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationDivision(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
-        return null;
+        return simpleCalculationResultService.createResultFromDivision(
+                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
 
     @PostMapping("multiply")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationMultiplication(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
-        return null;
+        return simpleCalculationResultService.createResultFromMultiplication(
+                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
 }

@@ -32,8 +32,8 @@ public class SimpleCalculatorControllerIntegrationTest {
 
     private static final String POST_ADDITION_PATH = "/calculation/add";
     private static final String POST_SUBTRACTION_PATH = "/calculation/subtract";
-    private static final String POST_DIVISION_PATH = "/calculation/division";
-    private static final String POST_MULTIPLICATION_PATH = "/calculation/multiplication";
+    private static final String POST_DIVISION_PATH = "/calculation/divide";
+    private static final String POST_MULTIPLICATION_PATH = "/calculation/multiply";
 
     private static final int LEFT_HAND = 10;
     private static final int RIGHT_HAND = 20;
