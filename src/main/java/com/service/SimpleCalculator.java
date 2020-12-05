@@ -18,6 +18,6 @@ public class SimpleCalculator {
     }
 
     public double divide(int leftHand, int rightHand) {
-        return 0.0d;
+        return (double) leftHand / (double) rightHand;
     }
 }
