@@ -1,8 +1,9 @@
 package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
-import com.rest.dto.SimpleCalculationResultDto;
+import com.service.SimpleCalculationResult;
 import com.rest.dto.SimpleCalculationResultFactory;
+import com.service.SimpleCalculationResultService;
 import com.service.SimpleCalculator;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,33 +13,33 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class SimpleCalculationController {
 
-    private final SimpleCalculator simpleCalculator;
-    private final SimpleCalculationResultFactory simpleCalculationResultFactory;
+    private final SimpleCalculationResultService simpleCalculationResultService;
 
-    @PostMapping("add")
+    @PostMapping("/add")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationAddition(
+    public SimpleCalculationResult postSimpleCalculationAddition(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
-        return null;
+        return simpleCalculationResultService.createResultFromAddition(
+                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
 
     @PostMapping("subtract")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationSubtraction(
+    public SimpleCalculationResult postSimpleCalculationSubtraction(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 
     @PostMapping("divide")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationDivision(
+    public SimpleCalculationResult postSimpleCalculationDivision(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 
     @PostMapping("multiply")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationMultiplication(
+    public SimpleCalculationResult postSimpleCalculationMultiplication(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }

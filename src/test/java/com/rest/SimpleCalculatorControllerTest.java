@@ -1,65 +1,57 @@
 package com.rest;
 
-import static org.mockito.ArgumentMatchers.anyDouble;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-
+import com.google.gson.Gson;
 import com.helper.factory.FakeSimpleCalculationDtoFactory;
-import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
 import com.rest.dto.SimpleCalculationDto;
-import com.rest.dto.SimpleCalculationResultDto;
-import com.rest.dto.SimpleCalculationResultFactory;
-import com.service.SimpleCalculator;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-@RunWith(MockitoJUnitRunner.class)
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/SimpleCalculatorApp-servlet-test.xml")
+@WebAppConfiguration
 public class SimpleCalculatorControllerTest {
+
+    private static final String POST_ADDITION_PATH = "/calculation/add";
 
     private static final int LEFT_HAND = 10;
     private static final int RIGHT_HAND = 20;
 
-    private static final double ADDITION_RESULT = 1.0d;
-    private static final double SUBTRACTION_RESULT = 2.0d;
-    private static final double MULTIPLICATION_RESULT = 3.0d;
-    private static final double DIVISION_RESULT = 4.0d;
-
     private static final SimpleCalculationDto SIMPLE_CALCULATION_DTO
             = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND);
 
-    private static final SimpleCalculationResultDto SIMPLE_CALCULATION_RESULT_DTO
-            = FakeSimpleCalculationResultDtoFactory.create();
-
-    @Mock
-    private SimpleCalculator simpleCalculator;
-
-    @Mock
-    private SimpleCalculationResultFactory simpleCalculationResultFactory;
-
-    @InjectMocks
-    private SimpleCalculationController simpleCalculationController;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
 
+    private final Gson gson = new Gson();
+
     @Before
     public void init() {
-        MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(simpleCalculationController).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+    }
 
-        when(simpleCalculator.add(LEFT_HAND, RIGHT_HAND)).thenReturn(ADDITION_RESULT);
-        when(simpleCalculator.subtract(LEFT_HAND, RIGHT_HAND)).thenReturn(SUBTRACTION_RESULT);
-        when(simpleCalculator.divide(LEFT_HAND, RIGHT_HAND)).thenReturn(DIVISION_RESULT);
-        when(simpleCalculator.multiply(LEFT_HAND, RIGHT_HAND)).thenReturn(MULTIPLICATION_RESULT);
+    @Test
+    public void postSimpleCalculationAdditionShouldReturnStatusOk() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post(POST_ADDITION_PATH)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(SIMPLE_CALCULATION_DTO))
+                .accept(MediaType.APPLICATION_JSON);
 
-        when(simpleCalculationResultFactory.create(anyDouble()))
-                .thenReturn(SIMPLE_CALCULATION_RESULT_DTO);
-
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk());
     }
 }

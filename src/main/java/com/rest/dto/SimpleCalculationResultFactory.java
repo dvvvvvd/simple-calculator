@@ -1,11 +1,12 @@
 package com.rest.dto;
 
+import com.service.SimpleCalculationResult;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleCalculationResultFactory {
 
-    public SimpleCalculationResultDto create(double result) {
-        return new SimpleCalculationResultDto(result);
+    public SimpleCalculationResult create(double result) {
+        return new SimpleCalculationResult(result);
     }
 }

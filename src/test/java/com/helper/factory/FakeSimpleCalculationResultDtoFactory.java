@@ -1,11 +1,10 @@
 package com.helper.factory;
 
-import com.rest.dto.SimpleCalculationDto;
-import com.rest.dto.SimpleCalculationResultDto;
+import com.service.SimpleCalculationResult;
 
 public class FakeSimpleCalculationResultDtoFactory {
 
-    public static SimpleCalculationResultDto create() {
-        return new SimpleCalculationResultDto(1.0d);
+    public static SimpleCalculationResult create() {
+        return new SimpleCalculationResult(1.0d);
     }
 }
