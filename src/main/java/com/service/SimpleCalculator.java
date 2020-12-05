@@ -10,7 +10,7 @@ public class SimpleCalculator {
     }
 
     public double subtract(int leftHand, int rightHand) {
-        return 0.0d;
+        return (double) leftHand - (double) rightHand;
     }
 
     public double multiply(int leftHand, int rightHand) {

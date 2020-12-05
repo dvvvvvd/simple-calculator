@@ -33,13 +33,13 @@ public class SimpleCalculatorTest {
 
     @Test
     public void subtractShouldPerformSubtractionForTwoNegativeNumbers() {
-        double result = simpleCalculator.add(-1, -1);
+        double result = simpleCalculator.subtract(-1, -1);
         assertEquals(0.0d, result, 0.0d);
     }
 
     @Test
     public void subtractShouldPerformSubtractionForOnePositiveAndOneNegativeNumbers() {
-        double result = simpleCalculator.add(1, -1);
+        double result = simpleCalculator.subtract(1, -1);
         assertEquals(2.0d, result, 0.0d);
     }
 
