@@ -12,18 +12,26 @@ public class SimpleCalculationResultService {
     private final SimpleCalculator simpleCalculator;
 
     public SimpleCalculationResult createResultFromAddition(int leftHand, int rightHand) {
-        return null;
+        double resultFromAddition = simpleCalculator.add(leftHand, rightHand);
+
+        return simpleCalculationResultFactory.create(resultFromAddition);
     }
 
     public SimpleCalculationResult createResultFromSubtraction(int leftHand, int rightHand) {
-        return null;
+        double resultFromSubtraction = simpleCalculator.subtract(leftHand, rightHand);
+
+        return simpleCalculationResultFactory.create(resultFromSubtraction);
     }
 
     public SimpleCalculationResult createResultFromDivision(int leftHand, int rightHand) {
-        return null;
+        double resultFromDivision = simpleCalculator.divide(leftHand, rightHand);
+
+        return simpleCalculationResultFactory.create(resultFromDivision);
     }
 
     public SimpleCalculationResult createResultFromMultiplication(int leftHand, int rightHand) {
-        return null;
+        double resultFromMultiplication = simpleCalculator.multiply(leftHand, rightHand);
+
+        return simpleCalculationResultFactory.create(resultFromMultiplication);
     }
 }

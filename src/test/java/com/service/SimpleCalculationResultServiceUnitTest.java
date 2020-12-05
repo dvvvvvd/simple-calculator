@@ -12,7 +12,7 @@ import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class SimpleCalculatorResultServiceUnitTest {
+public class SimpleCalculationResultServiceUnitTest {
 
     private static final int LEFT_HAND = 10;
     private static final int RIGHT_HAND = 20;
