@@ -3,7 +3,7 @@ package com.service;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class SimpleCalculatorTest {
+public class SimpleCalculatorUnitTest {
 
     private final SimpleCalculator simpleCalculator = new SimpleCalculator();
 
