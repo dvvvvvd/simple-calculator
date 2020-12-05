@@ -2,9 +2,7 @@ package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
-import com.rest.dto.SimpleCalculationResultFactory;
 import com.service.SimpleCalculationResultService;
-import com.service.SimpleCalculator;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

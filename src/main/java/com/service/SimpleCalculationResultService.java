@@ -1,6 +1,7 @@
 package com.service;
 
-import com.rest.dto.SimpleCalculationResultFactory;
+import static org.junit.Assert.assertTrue;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

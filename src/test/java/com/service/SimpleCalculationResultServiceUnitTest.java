@@ -1,7 +1,6 @@
 package com.service;
 
 import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
-import com.rest.dto.SimpleCalculationResultFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

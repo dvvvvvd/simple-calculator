@@ -1,4 +1,4 @@
-package com.rest.dto;
+package com.service;
 
 import com.service.SimpleCalculationResult;
 import org.springframework.stereotype.Component;
