@@ -2,11 +2,16 @@ package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.dto.SimpleCalculationResultDto;
+import com.service.SimpleCalculator;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/calculation", consumes = "application/json", produces = "application/json")
+@AllArgsConstructor
 public class SimpleCalculationController {
+
+    private final SimpleCalculator simpleCalculator;
 
     @PostMapping("add")
     @ResponseBody
