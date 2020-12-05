@@ -3,15 +3,13 @@ package com.rest;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
-import com.sun.org.slf4j.internal.LoggerFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/calculation", consumes = "application/json", produces = "application/json")
 @AllArgsConstructor
+@CrossOrigin
 public class SimpleCalculationController {
 
     private final SimpleCalculationResultService simpleCalculationResultService;
@@ -19,6 +17,7 @@ public class SimpleCalculationController {
     @PostMapping("/add")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationAddition(@RequestBody SimpleCalculationDto simpleCalculationDto) {
+        System.out.println("received HTTP request for /calculation/add");
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -27,6 +26,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationSubtraction(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
+        System.out.println("received HTTP request for /calculation/subtract");
         return simpleCalculationResultService.createResultFromSubtraction(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -35,6 +35,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationDivision(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
+        System.out.println("received HTTP request for /calculation/divide");
         return simpleCalculationResultService.createResultFromDivision(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -43,6 +44,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationMultiplication(
             @RequestBody SimpleCalculationDto simpleCalculationDto) {
+        System.out.println("received HTTP request for /calculation/multiply");
         return simpleCalculationResultService.createResultFromMultiplication(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
