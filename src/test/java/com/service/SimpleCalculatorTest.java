@@ -64,19 +64,19 @@ public class SimpleCalculatorTest {
 
     @Test
     public void multiplyShouldPerformMultiplicationForTwoPositiveNumbers() {
-        double result = simpleCalculator.divide(1, 1);
+        double result = simpleCalculator.multiply(1, 1);
         assertEquals(1.0d, result, 0.0d);
     }
 
     @Test
     public void multiplyShouldPerformMultiplicationForTwoNegativeNumbers() {
-        double result = simpleCalculator.divide(-1, -1);
+        double result = simpleCalculator.multiply(-1, -1);
         assertEquals(1.0d, result, 0.0d);
     }
 
     @Test
     public void multiplyShouldPerformMultiplicationForOnePositiveAndOneNegativeNumbers() {
-        double result = simpleCalculator.divide(1, -1);
+        double result = simpleCalculator.multiply(1, -1);
         assertEquals(-1.0d, result, 0.0d);
     }
 }
