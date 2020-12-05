@@ -60,4 +60,23 @@ public class SimpleCalculatorTest {
         double result = simpleCalculator.divide(1, -1);
         assertEquals(-1.0d, result, 0.0d);
     }
+
+
+    @Test
+    public void multiplyShouldPerformMultiplicationForTwoPositiveNumbers() {
+        double result = simpleCalculator.divide(1, 1);
+        assertEquals(1.0d, result, 0.0d);
+    }
+
+    @Test
+    public void multiplyShouldPerformMultiplicationForTwoNegativeNumbers() {
+        double result = simpleCalculator.divide(-1, -1);
+        assertEquals(1.0d, result, 0.0d);
+    }
+
+    @Test
+    public void multiplyShouldPerformMultiplicationForOnePositiveAndOneNegativeNumbers() {
+        double result = simpleCalculator.divide(1, -1);
+        assertEquals(-1.0d, result, 0.0d);
+    }
 }
