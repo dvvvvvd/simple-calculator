@@ -10,25 +10,29 @@ public class SimpleCalculationController {
 
     @PostMapping("add")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationAddition(SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResultDto postSimpleCalculationAddition(
+            @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 
     @PostMapping("subtract")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationSubtraction(SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResultDto postSimpleCalculationSubtraction(
+            @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 
     @PostMapping("divide")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationDivision(SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResultDto postSimpleCalculationDivision(
+            @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 
     @PostMapping("multiply")
     @ResponseBody
-    public SimpleCalculationResultDto postSimpleCalculationMultiplication(SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResultDto postSimpleCalculationMultiplication(
+            @RequestBody SimpleCalculationDto simpleCalculationDto) {
         return null;
     }
 }
