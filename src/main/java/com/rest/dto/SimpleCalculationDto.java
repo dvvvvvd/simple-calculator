@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SimpleCalculationDto {
 
-    private int leftHand;
-    private int rightHand;
+    private Integer leftHand;
+    private Integer rightHand;
 }

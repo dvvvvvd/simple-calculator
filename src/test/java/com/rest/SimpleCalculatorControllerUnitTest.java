@@ -22,6 +22,9 @@ public class SimpleCalculatorControllerUnitTest {
     @Mock
     private SimpleCalculationResultService simpleCalculationResultServiceMock;
 
+    @Mock
+    private InputValidator inputValidatorMock;
+
     @InjectMocks
     private SimpleCalculationController simpleCalculationController;
 
@@ -31,7 +34,7 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
-    public void  postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() {
+    public void  postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
 
@@ -40,7 +43,7 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
-    public void  postSimpleCalculationSubtractionShouldCallSimpleCalculationResultService() {
+    public void  postSimpleCalculationSubtractionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationSubtraction(SIMPLE_CALCULATION_DTO);
 
@@ -49,7 +52,7 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
-    public void  postSimpleCalculationDivisionShouldCallSimpleCalculationResultService() {
+    public void  postSimpleCalculationDivisionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationDivision(SIMPLE_CALCULATION_DTO);
 
@@ -58,7 +61,7 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
-    public void  postSimpleCalculationMultiplicationShouldCallSimpleCalculationResultService() {
+    public void  postSimpleCalculationMultiplicationShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationMultiplication(SIMPLE_CALCULATION_DTO);
 

@@ -1,9 +1,11 @@
 package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
+import com.rest.exception.EmptyInputException;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,11 +25,14 @@ import org.springframework.web.bind.annotation.*;
 public class SimpleCalculationController {
 
     private final SimpleCalculationResultService simpleCalculationResultService;
+    private final InputValidator inputValidator;
 
     @PostMapping("/add")
     @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationAddition(@RequestBody SimpleCalculationDto simpleCalculationDto) {
+    public SimpleCalculationResult postSimpleCalculationAddition
+            (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
         System.out.println("received HTTP request for /calculation/add");
+        inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -35,8 +40,9 @@ public class SimpleCalculationController {
     @PostMapping("subtract")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationSubtraction(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) {
+            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
         System.out.println("received HTTP request for /calculation/subtract");
+        inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromSubtraction(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -44,8 +50,9 @@ public class SimpleCalculationController {
     @PostMapping("divide")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationDivision(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) {
+            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
         System.out.println("received HTTP request for /calculation/divide");
+        inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromDivision(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
@@ -53,8 +60,9 @@ public class SimpleCalculationController {
     @PostMapping("multiply")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationMultiplication(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) {
+            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
         System.out.println("received HTTP request for /calculation/multiply");
+        inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromMultiplication(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
