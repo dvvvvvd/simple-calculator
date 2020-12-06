@@ -18,9 +18,9 @@ The following (POST) endpoints are exposed:
 
 Example of request body (JSON):
 
-{
-  "leftHand": 1
-  "rightHand": 2
-}
+{ <br/>
+  "leftHand": 1 <br/>
+  "rightHand": 2 <br/>
+} <br/>
 
 Simply run the "run.sh" to compile, package and deploy the application.
