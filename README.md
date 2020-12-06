@@ -23,4 +23,4 @@ Example of request body (JSON):
   "rightHand": 2 <br/>
 } <br/>
 
-Simply run the "run.sh" to compile, test, package and deploy the application.
+Simply run the "run.sh" shell script to compile, test, package and deploy the application.
