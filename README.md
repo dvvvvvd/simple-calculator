@@ -1,6 +1,6 @@
 # simple-calculator
 
-Prequisites: <br/>
+Prerequisites <br/>
 Java 11 <br/>
 Maven <br/>
 Docker <br/>
