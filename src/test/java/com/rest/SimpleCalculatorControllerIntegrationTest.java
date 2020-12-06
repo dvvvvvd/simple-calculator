@@ -41,6 +41,9 @@ public class SimpleCalculatorControllerIntegrationTest {
     private static final SimpleCalculationDto SIMPLE_CALCULATION_DTO
             = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND);
 
+    private static final SimpleCalculationDto FAULTY_LEFTHAND_SIMPLE_CALCULATION_DTO
+            = FakeSimpleCalculationDtoFactory.create(null, RIGHT_HAND);
+
     private static final SimpleCalculationResult ADDITION_RESULT
             = FakeSimpleCalculationResultDtoFactory.create(30.0d);
 
@@ -85,6 +88,14 @@ public class SimpleCalculatorControllerIntegrationTest {
     }
 
     @Test
+    public void postSimpleCalculationAdditionShouldReturnStatusBadRequestForFaultyDto() throws Exception {
+        RequestBuilder requestBuilder = buildFaultyRequestForPostDtoForPath(POST_ADDITION_PATH);
+
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     public void postSimpleCalculationSubtractionShouldReturnStatusOk() throws Exception {
         RequestBuilder requestBuilder = buildRequestForPostDtoForPath(POST_SUBTRACTION_PATH);
 
@@ -105,6 +116,14 @@ public class SimpleCalculatorControllerIntegrationTest {
     }
 
     @Test
+    public void postSimpleCalculationSubtractionShouldReturnStatusBadRequestForFaultyDto() throws Exception {
+        RequestBuilder requestBuilder = buildFaultyRequestForPostDtoForPath(POST_SUBTRACTION_PATH);
+
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     public void postSimpleCalculationDivisionShouldReturnStatusOk() throws Exception {
         RequestBuilder requestBuilder = buildRequestForPostDtoForPath(POST_DIVISION_PATH);
 
@@ -122,6 +141,22 @@ public class SimpleCalculatorControllerIntegrationTest {
                 .convert(mvcResult, SimpleCalculationResult.class);
 
         assertEquals(DIVISION_RESULT, simpleCalculationResult);
+    }
+
+    @Test
+    public void postSimpleCalculationDivisionShouldReturnStatusBadRequestForFaultyDto() throws Exception {
+        RequestBuilder requestBuilder = buildFaultyRequestForPostDtoForPath(POST_DIVISION_PATH);
+
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void postSimpleCalculationMultiplicationShouldReturnStatusBadRequestForFaultyDto() throws Exception {
+        RequestBuilder requestBuilder = buildFaultyRequestForPostDtoForPath(POST_MULTIPLICATION_PATH);
+
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -149,6 +184,13 @@ public class SimpleCalculatorControllerIntegrationTest {
         return MockMvcRequestBuilders.post(path)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(SIMPLE_CALCULATION_DTO))
+                .accept(MediaType.APPLICATION_JSON);
+    }
+
+    private RequestBuilder buildFaultyRequestForPostDtoForPath(String path) {
+        return MockMvcRequestBuilders.post(path)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(FAULTY_LEFTHAND_SIMPLE_CALCULATION_DTO))
                 .accept(MediaType.APPLICATION_JSON);
     }
 }
