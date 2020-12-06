@@ -22,8 +22,8 @@ Example of request body (JSON):
 
 ```json
 {
-  "leftHand": 1 <br/>
-  "rightHand": 2 <br/>
+  "leftHand": 1,
+  "rightHand": 2
 }
 ```
 
