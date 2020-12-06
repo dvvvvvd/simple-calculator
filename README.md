@@ -1,9 +1,9 @@
 # simple-calculator
 
 Prequisites:
-Java 11
-Maven
-Docker
+Java 11 <br/>
+Maven <br/>
+Docker <br/>
 
 This project runs a simple REST API implementing a Simple Calculator. The servlet is hosted on a Tomcat server deployed in a Docker container.
 
