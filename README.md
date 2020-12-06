@@ -1,9 +1,11 @@
 # simple-calculator
 
-Prerequisites <br/>
+## Prerequisites
 Java 11 <br/>
 Maven <br/>
 Docker <br/>
+
+## Overview
 
 This project implements a REST API for a Simple Calculator. The servlet is hosted on a Tomcat server deployed in a Docker container.
 
@@ -18,9 +20,13 @@ The following (POST) endpoints are exposed:
 
 Example of request body (JSON):
 
-{ <br/>
+```json
+{
   "leftHand": 1 <br/>
   "rightHand": 2 <br/>
-} <br/>
+}
+```
+
+## Running the application
 
 Simply run the "run.sh" shell script to compile, test, package and deploy the application.
