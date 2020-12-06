@@ -43,12 +43,30 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
+    public void  postSimpleCalculationAdditionShouldCallInputValidator() throws Exception {
+        simpleCalculationController
+                .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
+
+        verify(inputValidatorMock)
+                .validate(SIMPLE_CALCULATION_DTO);
+    }
+
+    @Test
     public void  postSimpleCalculationSubtractionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationSubtraction(SIMPLE_CALCULATION_DTO);
 
         verify(simpleCalculationResultServiceMock)
                 .createResultFromSubtraction(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test
+    public void  postSimpleCalculationSubtractionShouldCallInputValidator() throws Exception {
+        simpleCalculationController
+                .postSimpleCalculationSubtraction(SIMPLE_CALCULATION_DTO);
+
+        verify(inputValidatorMock)
+                .validate(SIMPLE_CALCULATION_DTO);
     }
 
     @Test
@@ -61,11 +79,29 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
+    public void  postSimpleCalculationDivisionShouldCallInputValidator() throws Exception {
+        simpleCalculationController
+                .postSimpleCalculationDivision(SIMPLE_CALCULATION_DTO);
+
+        verify(inputValidatorMock)
+                .validate(SIMPLE_CALCULATION_DTO);
+    }
+
+    @Test
     public void  postSimpleCalculationMultiplicationShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationMultiplication(SIMPLE_CALCULATION_DTO);
 
         verify(simpleCalculationResultServiceMock)
                 .createResultFromMultiplication(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test
+    public void  postSimpleCalculationMultiplicationShouldCallInputValidator() throws Exception {
+        simpleCalculationController
+                .postSimpleCalculationMultiplication(SIMPLE_CALCULATION_DTO);
+
+        verify(inputValidatorMock)
+                .validate(SIMPLE_CALCULATION_DTO);
     }
 }
