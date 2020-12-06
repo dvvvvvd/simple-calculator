@@ -4,7 +4,7 @@ import com.rest.dto.SimpleCalculationDto;
 
 public class FakeSimpleCalculationDtoFactory {
 
-    public static SimpleCalculationDto create(int leftHand, int rightHand) {
+    public static SimpleCalculationDto create(Integer leftHand, Integer rightHand) {
         return new SimpleCalculationDto(leftHand, rightHand);
     }
 }
