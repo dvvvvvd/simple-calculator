@@ -5,7 +5,7 @@ Java 11 <br/>
 Maven <br/>
 Docker <br/>
 
-This project runs a simple REST API implementing a Simple Calculator. The servlet is hosted on a Tomcat server deployed in a Docker container.
+This project implements a REST API for a Simple Calculator. The servlet is hosted on a Tomcat server deployed in a Docker container.
 
 The following (POST) endpoints are exposed:
 
@@ -23,4 +23,4 @@ Example of request body (JSON):
   "rightHand": 2 <br/>
 } <br/>
 
-Simply run the "run.sh" to compile, package and deploy the application.
+Simply run the "run.sh" to compile, test, package and deploy the application.
