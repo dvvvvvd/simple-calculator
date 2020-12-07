@@ -6,6 +6,8 @@ import com.rest.exception.InvalidInputException;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class SimpleCalculationController {
 
+    private static final Logger LOGGER = LogManager.getLogger(SimpleCalculationController.class);
+
     private final SimpleCalculationResultService simpleCalculationResultService;
     private final InputValidator inputValidator;
 
@@ -32,7 +36,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationAddition
             (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        System.out.println("received HTTP request for /calculation/add");
+        LOGGER.info("received HTTP request for /calculation/add");
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
@@ -42,7 +46,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationSubtraction(
             @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        System.out.println("received HTTP request for /calculation/subtract");
+        LOGGER.info("received HTTP request for /calculation/subtract");
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromSubtraction(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
@@ -52,7 +56,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationDivision(
             @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException, InvalidInputException {
-        System.out.println("received HTTP request for /calculation/divide");
+        LOGGER.info("received HTTP request for /calculation/divide");
         inputValidator.validateForDivision(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromDivision(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
@@ -62,7 +66,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationMultiplication(
             @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        System.out.println("received HTTP request for /calculation/multiply");
+        LOGGER.info("received HTTP request for /calculation/multiply");
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromMultiplication(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());

@@ -3,6 +3,8 @@ package com.rest;
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,11 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalControllerAdvice {
 
+    private static final Logger LOGGER = LogManager.getLogger(SimpleCalculationController.class);
+
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(EmptyInputException.class)
     @ResponseBody
     public String handleEmptyInputException(HttpServletRequest request) {
-        System.out.println("Failed to handle request for " + request.getPathInfo());
+        LOGGER.error("Failed to handle request for " + request.getPathInfo());
         return "Unable to process request, not all input parameters were provided";
     }
 
@@ -26,7 +30,7 @@ public class GlobalControllerAdvice {
     @ExceptionHandler(InvalidInputException.class)
     @ResponseBody
     public String handleInvalidInputException(HttpServletRequest request) {
-        System.out.println("Failed to handle request for " + request.getPathInfo());
+        LOGGER.error("Failed to handle request for " + request.getPathInfo());
         return "Unable to process request, input was invalid for the requested operation";
     }
 }
