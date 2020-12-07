@@ -2,6 +2,7 @@ package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
+import com.rest.exception.InvalidInputException;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;
@@ -50,9 +51,9 @@ public class SimpleCalculationController {
     @PostMapping("divide")
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationDivision(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
+            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException, InvalidInputException {
         System.out.println("received HTTP request for /calculation/divide");
-        inputValidator.validate(simpleCalculationDto);
+        inputValidator.validateForDivision(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromDivision(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }

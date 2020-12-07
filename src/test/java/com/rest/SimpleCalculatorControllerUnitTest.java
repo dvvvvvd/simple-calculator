@@ -84,7 +84,7 @@ public class SimpleCalculatorControllerUnitTest {
                 .postSimpleCalculationDivision(SIMPLE_CALCULATION_DTO);
 
         verify(inputValidatorMock)
-                .validate(SIMPLE_CALCULATION_DTO);
+                .validateForDivision(SIMPLE_CALCULATION_DTO);
     }
 
     @Test

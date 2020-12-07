@@ -3,6 +3,7 @@ package com.rest;
 import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
+import com.rest.exception.InvalidInputException;
 import org.junit.Test;
 
 public class InputValidatorUnitTest {
@@ -19,6 +20,9 @@ public class InputValidatorUnitTest {
     private static final SimpleCalculationDto FAULTY_RIGHTHAND_SIMPLE_CALCULATION_DTO
             = FakeSimpleCalculationDtoFactory.create(RIGHT_HAND, null);
 
+    private static final SimpleCalculationDto FAULTY_DIVISION_SIMPLE_CALCULATION_DTO
+            = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, 0);
+
     private final InputValidator inputValidator = new InputValidator();
 
     @Test
@@ -34,5 +38,11 @@ public class InputValidatorUnitTest {
     @Test(expected = EmptyInputException.class)
     public void validateShouldThrowEmptyInputExceptionForMissingRightHandInDto() throws EmptyInputException {
         inputValidator.validate(FAULTY_RIGHTHAND_SIMPLE_CALCULATION_DTO);
+    }
+
+    @Test(expected = InvalidInputException.class)
+    public void validateForDivisionShouldThrowInvalidInputExceptionForMissingRightHandInDto()
+            throws EmptyInputException, InvalidInputException {
+        inputValidator.validateForDivision(FAULTY_DIVISION_SIMPLE_CALCULATION_DTO);
     }
 }
