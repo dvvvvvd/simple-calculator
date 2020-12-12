@@ -1,5 +1,6 @@
 package com.service;
 
+import com.persistence.repositories.SimpleCalculationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +17,13 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class SimpleCalculationResultService {
 
+
     private final SimpleCalculationResultFactory simpleCalculationResultFactory;
     private final SimpleCalculator simpleCalculator;
+
+    public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator) {
+        return null;
+    }
 
     public SimpleCalculationResult createResultFromAddition(int leftHand, int rightHand) {
         double resultFromAddition = simpleCalculator.add(leftHand, rightHand);

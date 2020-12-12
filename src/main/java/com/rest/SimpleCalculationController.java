@@ -1,7 +1,5 @@
 package com.rest;
 
-import com.persistence.entity.SimpleCalculation;
-import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;

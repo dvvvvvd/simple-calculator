@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class SimpleCalculationResultFactoryUnitTest {
+public class SimpleCalculationDAOResultFactoryUnitTest {
 
     private static final double RESULT = 1.0d;
 

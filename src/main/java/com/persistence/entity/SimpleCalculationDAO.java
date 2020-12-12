@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "SIMPLE_CALCULATION")
-public class SimpleCalculation extends BaseEntity {
+public class SimpleCalculationDAO extends BaseEntity {
 
     @Column(name = "RESULT")
     private Integer result;
