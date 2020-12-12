@@ -1,9 +1,6 @@
 package com.rest;
 
 import com.rest.dto.SimpleCalculationDto;
-import com.rest.exception.EmptyInputException;
-import com.rest.exception.InvalidInputException;
-import com.service.OperatorEnum;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;
@@ -51,47 +48,5 @@ public class SimpleCalculationController {
         }
 
         return results;
-    }
-
-
-    @PostMapping("/add")
-    @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationAddition
-            (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        LOGGER.info("received HTTP request for /calculation/add");
-
-        inputValidator.validate(simpleCalculationDto);
-        return simpleCalculationResultService.createResultFromAddition(
-                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
-    }
-
-    @PostMapping("subtract")
-    @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationSubtraction(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        LOGGER.info("received HTTP request for /calculation/subtract");
-        inputValidator.validate(simpleCalculationDto);
-        return simpleCalculationResultService.createResultFromSubtraction(
-                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
-    }
-
-    @PostMapping("divide")
-    @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationDivision(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException, InvalidInputException {
-        LOGGER.info("received HTTP request for /calculation/divide");
-        inputValidator.validateForDivision(simpleCalculationDto);
-        return simpleCalculationResultService.createResultFromDivision(
-                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
-    }
-
-    @PostMapping("multiply")
-    @ResponseBody
-    public SimpleCalculationResult postSimpleCalculationMultiplication(
-            @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        LOGGER.info("received HTTP request for /calculation/multiply");
-        inputValidator.validate(simpleCalculationDto);
-        return simpleCalculationResultService.createResultFromMultiplication(
-                simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
     }
 }

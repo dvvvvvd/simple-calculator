@@ -21,10 +21,10 @@ public class SimpleCalculatorControllerUnitTest {
     private static final String OPERATOR = "ADD";
 
     private static final SimpleCalculationDto SIMPLE_CALCULATION_DTO
-            = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND);
+            = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND, OPERATOR);
 
     private static final List<SimpleCalculationDto> SIMPLE_CALCULATION_DTO_LIST
-            = Collections.singletonList(FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND, OPERATOR));
+            = Collections.singletonList(SIMPLE_CALCULATION_DTO);
 
     @Mock
     private SimpleCalculationResultService simpleCalculationResultServiceMock;
@@ -53,78 +53,6 @@ public class SimpleCalculatorControllerUnitTest {
     public void postSimpleCalculationsShouldCallInputValidator() throws Exception {
         simpleCalculationController
                 .postCalculations(SIMPLE_CALCULATION_DTO_LIST);
-
-        verify(inputValidatorMock)
-                .validate(SIMPLE_CALCULATION_DTO);
-    }
-
-    @Test
-    public void postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
-
-        verify(simpleCalculationResultServiceMock)
-                .createResultFromAddition(LEFT_HAND, RIGHT_HAND);
-    }
-
-    @Test
-    public void  postSimpleCalculationAdditionShouldCallInputValidator() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
-
-        verify(inputValidatorMock)
-                .validate(SIMPLE_CALCULATION_DTO);
-    }
-
-    @Test
-    public void  postSimpleCalculationSubtractionShouldCallSimpleCalculationResultService() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationSubtraction(SIMPLE_CALCULATION_DTO);
-
-        verify(simpleCalculationResultServiceMock)
-                .createResultFromSubtraction(LEFT_HAND, RIGHT_HAND);
-    }
-
-    @Test
-    public void  postSimpleCalculationSubtractionShouldCallInputValidator() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationSubtraction(SIMPLE_CALCULATION_DTO);
-
-        verify(inputValidatorMock)
-                .validate(SIMPLE_CALCULATION_DTO);
-    }
-
-    @Test
-    public void  postSimpleCalculationDivisionShouldCallSimpleCalculationResultService() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationDivision(SIMPLE_CALCULATION_DTO);
-
-        verify(simpleCalculationResultServiceMock)
-                .createResultFromDivision(LEFT_HAND, RIGHT_HAND);
-    }
-
-    @Test
-    public void  postSimpleCalculationDivisionShouldCallInputValidator() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationDivision(SIMPLE_CALCULATION_DTO);
-
-        verify(inputValidatorMock)
-                .validateForDivision(SIMPLE_CALCULATION_DTO);
-    }
-
-    @Test
-    public void  postSimpleCalculationMultiplicationShouldCallSimpleCalculationResultService() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationMultiplication(SIMPLE_CALCULATION_DTO);
-
-        verify(simpleCalculationResultServiceMock)
-                .createResultFromMultiplication(LEFT_HAND, RIGHT_HAND);
-    }
-
-    @Test
-    public void  postSimpleCalculationMultiplicationShouldCallInputValidator() throws Exception {
-        simpleCalculationController
-                .postSimpleCalculationMultiplication(SIMPLE_CALCULATION_DTO);
 
         verify(inputValidatorMock)
                 .validate(SIMPLE_CALCULATION_DTO);
