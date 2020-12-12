@@ -3,6 +3,7 @@ package com.rest;
 import static org.junit.Assert.assertEquals;
 
 import com.google.gson.Gson;
+import com.helper.IntegrationTest;
 import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
 import com.helper.utility.MvcJsonResultConverter;
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,9 +28,8 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/SimpleCalculatorApp-servlet-test.xml")
 @WebAppConfiguration
-public class SimpleCalculatorControllerIntegrationTest {
+public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  {
 
     private static final String POST_ADDITION_PATH = "/calculation/add";
     private static final String POST_SUBTRACTION_PATH = "/calculation/subtract";

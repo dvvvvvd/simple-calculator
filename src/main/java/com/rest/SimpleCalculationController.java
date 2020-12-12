@@ -1,5 +1,7 @@
 package com.rest;
 
+import com.persistence.entity.SimpleCalculation;
+import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;
@@ -37,6 +39,7 @@ public class SimpleCalculationController {
     public SimpleCalculationResult postSimpleCalculationAddition
             (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
         LOGGER.info("received HTTP request for /calculation/add");
+
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
