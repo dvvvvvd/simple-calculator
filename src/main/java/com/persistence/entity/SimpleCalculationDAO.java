@@ -18,6 +18,12 @@ public class SimpleCalculationDAO extends BaseEntity {
     @Column(name = "RESULT")
     private Integer result;
 
+    @Column(name = "LEFTHAND")
+    private Integer leftHnad;
+
+    @Column(name = "RIGHTHAND")
+    private Integer rightHand;
+
     @Column(name = "EXPRESSION")
-    private String expression;
+    private String operator;
 }

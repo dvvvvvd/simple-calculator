@@ -1,6 +1,7 @@
 package com.service;
 
 import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
+import com.rest.exception.InvalidInputException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -46,29 +47,36 @@ public class SimpleCalculationResultServiceUnitTest {
     }
 
     @Test
-    public void createResultShouldCallSimpleCalculatorAddForAddOpertor() {
+    public void createResultShouldCallSimpleCalculatorAddForAddOperator() throws InvalidInputException {
         simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.ADD.name());
 
         verify(simpleCalculatorMock).add(LEFT_HAND, RIGHT_HAND);
     }
 
     @Test
-    public void createResultShouldCallSimpleCalculatorDivideForSubtractOpertor() {
+    public void createResultShouldCallSimpleCalculatorDivideForSubtractOperator() throws InvalidInputException {
         simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.SUBTRACT.name());
 
         verify(simpleCalculatorMock).subtract(LEFT_HAND, RIGHT_HAND);
     }
 
     @Test
-    public void createResultShouldCallSimpleCalculatorMultiplyForMultiplyOpertor() {
+    public void createResultShouldCallSimpleCalculatorMultiplyForMultiplyOperator() throws InvalidInputException {
         simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.MULTIPLY.name());
 
         verify(simpleCalculatorMock).multiply(LEFT_HAND, RIGHT_HAND);
     }
 
     @Test
-    public void createResultShouldCallSimpleCalculatorDivideForDivideOpertor() {
+    public void createResultShouldCallSimpleCalculatorDivideForDivideOperator() throws InvalidInputException {
         simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.DIVIDE.name());
+
+        verify(simpleCalculatorMock).divide(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test(expected = InvalidInputException.class)
+    public void createResultShouldThrowExceptionForInvalidOperator() throws InvalidInputException {
+        simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, "test");
 
         verify(simpleCalculatorMock).multiply(LEFT_HAND, RIGHT_HAND);
     }
