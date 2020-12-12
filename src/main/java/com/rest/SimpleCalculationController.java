@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A REST controller implementing several REST endpoints for receiving
  * DTOs, applying basic arithmetic and returning the result. A different endpoint
@@ -32,6 +35,24 @@ public class SimpleCalculationController {
 
     private final SimpleCalculationResultService simpleCalculationResultService;
     private final InputValidator inputValidator;
+
+    @PostMapping
+    @ResponseBody
+    public List<SimpleCalculationResult> postCalculations
+            (@Validated @RequestBody List<SimpleCalculationDto> dtoList) throws Exception {
+        LOGGER.info("received HTTP request for /calculation");
+
+        List<SimpleCalculationResult> results = new ArrayList<>();
+
+        for (SimpleCalculationDto dto : dtoList) {
+            inputValidator.validate(dto);
+            results.add(simpleCalculationResultService
+                    .createResult(dto.getLeftHand(), dto.getRightHand(), dto.getOperator()));
+        }
+
+        return results;
+    }
+
 
     @PostMapping("/add")
     @ResponseBody

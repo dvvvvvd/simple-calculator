@@ -9,15 +9,22 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
 
 public class SimpleCalculatorControllerUnitTest {
 
     private static final int LEFT_HAND = 10;
     private static final int RIGHT_HAND = 20;
+    private static final String OPERATOR = "ADD";
 
     private static final SimpleCalculationDto SIMPLE_CALCULATION_DTO
             = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND);
+
+    private static final List<SimpleCalculationDto> SIMPLE_CALCULATION_DTO_LIST
+            = Collections.singletonList(FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND, OPERATOR));
 
     @Mock
     private SimpleCalculationResultService simpleCalculationResultServiceMock;
@@ -34,7 +41,16 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
-    public void  postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() throws Exception {
+    public void postCalculationsShouldCallCalculationResultService() throws Exception {
+        simpleCalculationController
+                .postCalculations(SIMPLE_CALCULATION_DTO_LIST);
+
+        verify(simpleCalculationResultServiceMock)
+                .createResult(LEFT_HAND, RIGHT_HAND, OPERATOR);
+    }
+
+    @Test
+    public void postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
 
