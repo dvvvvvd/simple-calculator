@@ -12,4 +12,5 @@ public class SimpleCalculationDto {
 
     private Integer leftHand;
     private Integer rightHand;
+    private String operator;
 }

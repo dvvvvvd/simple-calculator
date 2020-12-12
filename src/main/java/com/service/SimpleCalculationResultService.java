@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class SimpleCalculationResultService {
 
-
     private final SimpleCalculationResultFactory simpleCalculationResultFactory;
     private final SimpleCalculator simpleCalculator;
 
-    public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator) throws InvalidInputException {
+    public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator)
+            throws InvalidInputException {
         double result;
 
         switch (operator) {
