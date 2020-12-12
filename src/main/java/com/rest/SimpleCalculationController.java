@@ -3,6 +3,7 @@ package com.rest;
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;
+import com.service.OperatorEnum;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;

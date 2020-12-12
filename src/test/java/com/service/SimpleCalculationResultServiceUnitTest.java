@@ -11,7 +11,7 @@ import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class SimpleCalculationDAOResultServiceUnitTest {
+public class SimpleCalculationResultServiceUnitTest {
 
     private static final int LEFT_HAND = 10;
     private static final int RIGHT_HAND = 20;
@@ -43,6 +43,34 @@ public class SimpleCalculationDAOResultServiceUnitTest {
 
         when(simpleCalculationResultFactoryMock.create(anyDouble()))
                 .thenReturn(SIMPLE_CALCULATION_RESULT);
+    }
+
+    @Test
+    public void createResultShouldCallSimpleCalculatorAddForAddOpertor() {
+        simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.ADD.name());
+
+        verify(simpleCalculatorMock).add(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test
+    public void createResultShouldCallSimpleCalculatorDivideForSubtractOpertor() {
+        simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.SUBTRACT.name());
+
+        verify(simpleCalculatorMock).subtract(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test
+    public void createResultShouldCallSimpleCalculatorMultiplyForMultiplyOpertor() {
+        simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.MULTIPLY.name());
+
+        verify(simpleCalculatorMock).multiply(LEFT_HAND, RIGHT_HAND);
+    }
+
+    @Test
+    public void createResultShouldCallSimpleCalculatorDivideForDivideOpertor() {
+        simpleCalculationResultService.createResult(LEFT_HAND, RIGHT_HAND, OperatorEnum.DIVIDE.name());
+
+        verify(simpleCalculatorMock).multiply(LEFT_HAND, RIGHT_HAND);
     }
 
     @Test
