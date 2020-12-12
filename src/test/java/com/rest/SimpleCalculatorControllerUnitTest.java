@@ -50,6 +50,15 @@ public class SimpleCalculatorControllerUnitTest {
     }
 
     @Test
+    public void postSimpleCalculationsShouldCallInputValidator() throws Exception {
+        simpleCalculationController
+                .postCalculations(SIMPLE_CALCULATION_DTO_LIST);
+
+        verify(inputValidatorMock)
+                .validate(SIMPLE_CALCULATION_DTO);
+    }
+
+    @Test
     public void postSimpleCalculationAdditionShouldCallSimpleCalculationResultService() throws Exception {
         simpleCalculationController
                 .postSimpleCalculationAddition(SIMPLE_CALCULATION_DTO);
