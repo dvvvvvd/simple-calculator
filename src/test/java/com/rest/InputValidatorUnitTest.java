@@ -4,6 +4,7 @@ import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.rest.dto.SimpleCalculationDto;
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;
+import com.service.OperatorEnum;
 import org.junit.Test;
 
 public class InputValidatorUnitTest {
@@ -21,28 +22,28 @@ public class InputValidatorUnitTest {
             = FakeSimpleCalculationDtoFactory.create(RIGHT_HAND, null);
 
     private static final SimpleCalculationDto FAULTY_DIVISION_SIMPLE_CALCULATION_DTO
-            = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, 0);
+            = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, 0, OperatorEnum.DIVIDE.name());
 
     private final InputValidator inputValidator = new InputValidator();
 
     @Test
-    public void validateShouldNotThrowExceptionForValidDto() throws EmptyInputException {
+    public void validateShouldNotThrowExceptionForValidDto() throws EmptyInputException, InvalidInputException {
         inputValidator.validate(SIMPLE_CALCULATION_DTO);
     }
 
     @Test(expected = EmptyInputException.class)
-    public void validateShouldThrowEmptyInputExceptionForMissingLeftHandInDto() throws EmptyInputException {
+    public void validateShouldThrowEmptyInputExceptionForMissingLeftHandInDto() throws EmptyInputException, InvalidInputException {
         inputValidator.validate(FAULTY_LEFTHAND_SIMPLE_CALCULATION_DTO);
     }
 
     @Test(expected = EmptyInputException.class)
-    public void validateShouldThrowEmptyInputExceptionForMissingRightHandInDto() throws EmptyInputException {
+    public void validateShouldThrowEmptyInputExceptionForMissingRightHandInDto() throws EmptyInputException, InvalidInputException {
         inputValidator.validate(FAULTY_RIGHTHAND_SIMPLE_CALCULATION_DTO);
     }
 
     @Test(expected = InvalidInputException.class)
     public void validateForDivisionShouldThrowInvalidInputExceptionForMissingRightHandInDto()
             throws EmptyInputException, InvalidInputException {
-        inputValidator.validateForDivision(FAULTY_DIVISION_SIMPLE_CALCULATION_DTO);
+        inputValidator.validate(FAULTY_DIVISION_SIMPLE_CALCULATION_DTO);
     }
 }
