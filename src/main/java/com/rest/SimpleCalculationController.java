@@ -6,8 +6,8 @@ import com.rest.exception.InvalidInputException;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
 import lombok.AllArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class SimpleCalculationController {
 
-    private static final Logger LOGGER = LogManager.getLogger(SimpleCalculationController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleCalculationController.class);
 
     private final SimpleCalculationResultService simpleCalculationResultService;
     private final InputValidator inputValidator;
@@ -36,6 +36,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationAddition
             (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
+        LOGGER.info("received HTTP request for /calculation/add");
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());

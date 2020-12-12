@@ -2,9 +2,8 @@ package com.rest;
 
 import com.rest.exception.EmptyInputException;
 import com.rest.exception.InvalidInputException;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalControllerAdvice {
 
-    private static final Logger LOGGER = LogManager.getLogger(SimpleCalculationController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleCalculationController.class);
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(EmptyInputException.class)
