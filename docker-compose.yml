@@ -1,8 +1,27 @@
 version: '3'
 
 services:
-  app:
-    build: .
-    image: simple-calculator-image
+  tomcat:
+    image: tomcat
+    container_name: tomcat
+    volumes:
+      - ./target/my-simple-calculator.war:/usr/local/tomcat/webapps/my-simple-calculator.war
     ports:
-      - 8080:8080
+      - "8080:8080"
+  db:
+    image: mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: simple-calculator-database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "8100:3306"
+    security_opt:
+      - seccomp:unconfined
+
+volumes:
+  db_data: {}

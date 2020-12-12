@@ -36,7 +36,6 @@ public class SimpleCalculationController {
     @ResponseBody
     public SimpleCalculationResult postSimpleCalculationAddition
             (@Validated @RequestBody SimpleCalculationDto simpleCalculationDto) throws EmptyInputException {
-        LOGGER.info("received HTTP request for /calculation/add");
         inputValidator.validate(simpleCalculationDto);
         return simpleCalculationResultService.createResultFromAddition(
                 simpleCalculationDto.getLeftHand(), simpleCalculationDto.getRightHand());
