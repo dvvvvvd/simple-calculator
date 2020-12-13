@@ -46,7 +46,7 @@ public class SimpleCalculatorControllerUnitTest {
                 .postCalculations(SIMPLE_CALCULATION_DTO_LIST);
 
         verify(simpleCalculationResultServiceMock)
-                .createResult(LEFT_HAND, RIGHT_HAND, OPERATOR);
+                .createAndSaveResult(LEFT_HAND, RIGHT_HAND, OPERATOR);
     }
 
     @Test

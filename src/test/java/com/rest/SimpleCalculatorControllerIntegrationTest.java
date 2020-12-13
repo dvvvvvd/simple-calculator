@@ -5,6 +5,7 @@ import com.helper.IntegrationTest;
 import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
 import com.helper.utility.MvcJsonResultConverter;
+import com.persistence.entity.SimpleCalculationDAO;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import org.junit.Before;
@@ -49,6 +50,7 @@ public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  
     @Autowired
     private WebApplicationContext webApplicationContext;
 
+
     private MockMvc mockMvc;
 
     private final Gson gson = new Gson();
@@ -88,30 +90,19 @@ public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  
         assertEquals(ADDITION_RESULT, results.get(0));
     }
 
+    @Test
+    public void postSimpleCalculationsShouldStoreResult() throws Exception {
+
+    }
+
     private RequestBuilder buildRequestForPostDtoSingleListForPath(String path, SimpleCalculationDto dto) {
         List<SimpleCalculationDto> dtoList = Collections.singletonList(dto);
 
         String content = gson.toJson(dtoList);
 
-        System.out.println(content);
-
         return MockMvcRequestBuilders.post(path)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(content)
-                .accept(MediaType.APPLICATION_JSON);
-    }
-
-    private RequestBuilder buildRequestForPostDtoForPath(String path) {
-        return MockMvcRequestBuilders.post(path)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(gson.toJson(SIMPLE_CALCULATION_DTO))
-                .accept(MediaType.APPLICATION_JSON);
-    }
-
-    private RequestBuilder buildFaultyRequestForPostDtoForPath(String path) {
-        return MockMvcRequestBuilders.post(path)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(gson.toJson(FAULTY_LEFTHAND_SIMPLE_CALCULATION_DTO))
                 .accept(MediaType.APPLICATION_JSON);
     }
 }

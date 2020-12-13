@@ -1,7 +1,7 @@
 package com.service;
 
 import com.persistence.entity.SimpleCalculationDAO;
-import com.persistence.entity.SimpleCalculationDAOFactory;
+import com.persistence.factory.SimpleCalculationDAOFactory;
 import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.exception.InvalidInputException;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class SimpleCalculationResultService {
     private final SimpleCalculationRepository simpleCalculationRepository;
     private final SimpleCalculationDAOFactory simpleCalculationDAOFactory;
 
-    public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator)
+    public SimpleCalculationResult createAndSaveResult(int leftHand, int rightHand, String operator)
             throws InvalidInputException {
         double result;
 

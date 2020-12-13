@@ -47,7 +47,7 @@ public class SimpleCalculationController {
 
         for (SimpleCalculationDto dto : dtoList) {
             results.add(simpleCalculationResultService
-                    .createResult(dto.getLeftHand(), dto.getRightHand(), dto.getOperator()));
+                    .createAndSaveResult(dto.getLeftHand(), dto.getRightHand(), dto.getOperator()));
         }
 
         return results;

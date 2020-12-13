@@ -13,12 +13,6 @@ public class MvcJsonResultConverter {
     private static final Gson gson = new Gson();
     private static final JsonParser jsonParser = new JsonParser();
 
-    public static <T> T convert(MvcResult mvcResult, Class<T> clazz) throws Exception {
-        String responseString = mvcResult.getResponse().getContentAsString();
-
-        return gson.fromJson(responseString, clazz);
-    }
-
     public static <T> List<T> convertFromJsonArray(MvcResult mvcResult, Class<T> clazz) throws Exception {
         String responseString = mvcResult.getResponse().getContentAsString();
 
