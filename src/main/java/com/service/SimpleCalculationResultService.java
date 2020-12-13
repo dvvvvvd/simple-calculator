@@ -1,11 +1,11 @@
 package com.service;
 
+import com.persistence.entity.SimpleCalculationDAO;
+import com.persistence.entity.SimpleCalculationDAOFactory;
 import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.exception.InvalidInputException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Intermediate service for applying arithmetic using the SimpleCalculator
@@ -23,6 +23,7 @@ public class SimpleCalculationResultService {
     private final SimpleCalculationResultFactory simpleCalculationResultFactory;
     private final SimpleCalculator simpleCalculator;
     private final SimpleCalculationRepository simpleCalculationRepository;
+    private final SimpleCalculationDAOFactory simpleCalculationDAOFactory;
 
     public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator)
             throws InvalidInputException {
@@ -44,6 +45,11 @@ public class SimpleCalculationResultService {
             default:
                 throw new InvalidInputException("Invalid operator provided");
         }
+
+        SimpleCalculationDAO simpleCalculationDAO = simpleCalculationDAOFactory
+                .create(leftHand, rightHand, operator, result);
+
+        simpleCalculationRepository.save(simpleCalculationDAO);
 
         return simpleCalculationResultFactory.create(result);
     }
