@@ -1,5 +1,7 @@
 package com.rest;
 
+import com.persistence.entity.SimpleCalculationDAO;
+import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
@@ -37,7 +39,7 @@ public class SimpleCalculationController {
     @ResponseBody
     public List<SimpleCalculationResult> postCalculations
             (@Validated @RequestBody List<SimpleCalculationDto> dtoList) throws Exception {
-        LOGGER.info("received HTTP request for /calculation");
+        LOGGER.info("received POST request for /calculation");
 
         List<SimpleCalculationResult> results = new ArrayList<>();
 

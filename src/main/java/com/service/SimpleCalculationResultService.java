@@ -1,8 +1,11 @@
 package com.service;
 
+import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.exception.InvalidInputException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Intermediate service for applying arithmetic using the SimpleCalculator
@@ -19,6 +22,7 @@ public class SimpleCalculationResultService {
 
     private final SimpleCalculationResultFactory simpleCalculationResultFactory;
     private final SimpleCalculator simpleCalculator;
+    private final SimpleCalculationRepository simpleCalculationRepository;
 
     public SimpleCalculationResult createResult(int leftHand, int rightHand, String operator)
             throws InvalidInputException {
@@ -42,5 +46,9 @@ public class SimpleCalculationResultService {
         }
 
         return simpleCalculationResultFactory.create(result);
+    }
+
+    public void saveResult(SimpleCalculationResult result) {
+
     }
 }

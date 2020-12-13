@@ -25,10 +25,12 @@ public class DataSourceConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource datasource = new DriverManagerDataSource();
+
         datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://db:3306/simple-calculator-database");
+        datasource.setUrl("jdbc:mysql://db:3306/public");
         datasource.setUsername("root");
         datasource.setPassword("rootpassword");
+
         return datasource;
     }
 
@@ -57,7 +59,7 @@ public class DataSourceConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.default_schema", "simple-calculator-database");
+        properties.setProperty("hibernate.default_schema", "public");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;

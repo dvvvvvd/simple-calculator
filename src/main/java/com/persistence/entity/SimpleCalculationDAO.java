@@ -24,6 +24,6 @@ public class SimpleCalculationDAO extends BaseEntity {
     @Column(name = "RIGHTHAND")
     private Integer rightHand;
 
-    @Column(name = "EXPRESSION")
+    @Column(name = "OPERATOR")
     private String operator;
 }

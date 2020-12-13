@@ -8,7 +8,7 @@
 
     <bean id="dataSource"
           class="org.h2.jdbcx.JdbcDataSource">
-        <property name="URL" value="jdbc:h2:~/simple_calculator_database;MODE=MYSQL"/>
+        <property name="URL" value="jdbc:h2:~/public;MODE=MYSQL"/>
         <property name="user" value="sa"/>
         <property name="password" value="sa"/>
     </bean>
