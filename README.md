@@ -7,7 +7,9 @@ Docker <br/>
 
 ## Overview
 
-This project implements a REST API for a Simple Calculator. The servlet is hosted on a Tomcat server deployed in a Docker container.
+This project implements a REST API for a Simple Calculator deployed using a servlet. The servlet is deployed on a dockerized Tomcat server. The API accepts a list of (JSON) calculation objects as the request body. 
+
+A dockerized MySQL database is also deployed when you run the application. Calculations sent over the API are persisted in the database in the schema called "public" and the table called "SIMPLE_CALCULATION". You can access the database on port 8100. Username is "root" and password is "rootpassword".
 
 The following (POST) endpoints are exposed:
 
