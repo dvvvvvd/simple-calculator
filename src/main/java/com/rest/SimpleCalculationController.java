@@ -14,8 +14,7 @@ import java.util.List;
 
 /**
  * A REST controller implementing several REST endpoints for receiving
- * DTOs, applying basic arithmetic and returning the result. A different endpoint
- * has been created for each kind of arithmetic.
+ * DTOs, applying basic arithmetic, persisting and returning the result;
  *
  * @author  Daan van Driel
  * @version 1.0

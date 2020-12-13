@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Intermediate service for applying arithmetic using the SimpleCalculator
- * and transforming it to a SimpleCalculationResult using the factory pattern.
+ * and persisting the result
  *
  * @author  Daan van Driel
  * @version 1.0
