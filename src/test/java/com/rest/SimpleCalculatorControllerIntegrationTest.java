@@ -6,6 +6,7 @@ import com.helper.factory.FakeSimpleCalculationDtoFactory;
 import com.helper.factory.FakeSimpleCalculationResultDtoFactory;
 import com.helper.utility.MvcJsonResultConverter;
 import com.persistence.entity.SimpleCalculationDAO;
+import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import org.junit.Before;
@@ -34,9 +35,10 @@ public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  
 
     private static final String POST_CALCULATIONS_PATH = "/calculation";
 
-    private static final int LEFT_HAND = 10;
-    private static final int RIGHT_HAND = 20;
+    private static final Integer LEFT_HAND = 10;
+    private static final Integer RIGHT_HAND = 20;
     private static final String OPERATOR = "ADD";
+    private static final Double RESULT = 30.0d;
 
     private static final SimpleCalculationDto SIMPLE_CALCULATION_DTO
             = FakeSimpleCalculationDtoFactory.create(LEFT_HAND, RIGHT_HAND, OPERATOR);
@@ -45,11 +47,13 @@ public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  
             = FakeSimpleCalculationDtoFactory.create(null, RIGHT_HAND);
 
     private static final SimpleCalculationResult ADDITION_RESULT
-            = FakeSimpleCalculationResultDtoFactory.create(30.0d);
+            = FakeSimpleCalculationResultDtoFactory.create(RESULT);
 
     @Autowired
     private WebApplicationContext webApplicationContext;
 
+    @Autowired
+    private SimpleCalculationRepository simpleCalculationRepository;
 
     private MockMvc mockMvc;
 
@@ -91,8 +95,23 @@ public class SimpleCalculatorControllerIntegrationTest extends IntegrationTest  
     }
 
     @Test
-    public void postSimpleCalculationsShouldStoreResult() throws Exception {
+    public void postSimpleCalculationsShouldPersistResult() throws Exception {
+        List<SimpleCalculationDAO> currentCalculationDaoList = simpleCalculationRepository.findAll();
+        assertEquals(0, currentCalculationDaoList.size());
 
+        RequestBuilder requestBuilder =
+                buildRequestForPostDtoSingleListForPath(POST_CALCULATIONS_PATH, SIMPLE_CALCULATION_DTO);
+
+        this.mockMvc.perform(requestBuilder).andReturn();
+
+        List<SimpleCalculationDAO> afterPostDaoList = simpleCalculationRepository.findAll();
+        assertEquals(1, afterPostDaoList.size());
+
+        SimpleCalculationDAO dao = afterPostDaoList.get(0);
+        assertEquals(LEFT_HAND, dao.getLeftHand());
+        assertEquals(RIGHT_HAND, dao.getRightHand());
+        assertEquals(OPERATOR, dao.getOperator());
+        assertEquals(RESULT, dao.getResult());
     }
 
     private RequestBuilder buildRequestForPostDtoSingleListForPath(String path, SimpleCalculationDto dto) {

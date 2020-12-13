@@ -18,10 +18,10 @@ public class SimpleCalculationDAO extends BaseEntity {
     @Column(name = "RESULT")
     private Double result;
 
-    @Column(name = "LEFTHAND")
+    @Column(name = "LEFT_HAND")
     private Integer leftHand;
 
-    @Column(name = "RIGHTHAND")
+    @Column(name = "RIGHT_HAND")
     private Integer rightHand;
 
     @Column(name = "OPERATOR")
