@@ -1,7 +1,5 @@
 package com.rest;
 
-import com.persistence.entity.SimpleCalculationDAO;
-import com.persistence.repositories.SimpleCalculationRepository;
 import com.rest.dto.SimpleCalculationDto;
 import com.service.SimpleCalculationResult;
 import com.service.SimpleCalculationResultService;
@@ -45,6 +43,9 @@ public class SimpleCalculationController {
 
         for (SimpleCalculationDto dto : dtoList) {
             inputValidator.validate(dto);
+        }
+
+        for (SimpleCalculationDto dto : dtoList) {
             results.add(simpleCalculationResultService
                     .createResult(dto.getLeftHand(), dto.getRightHand(), dto.getOperator()));
         }
