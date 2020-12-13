@@ -47,8 +47,4 @@ public class SimpleCalculationResultService {
 
         return simpleCalculationResultFactory.create(result);
     }
-
-    public void saveResult(SimpleCalculationResult result) {
-
-    }
 }

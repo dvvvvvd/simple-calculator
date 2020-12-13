@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class SimpleCalculationDAO extends BaseEntity {
 
     @Column(name = "RESULT")
-    private Integer result;
+    private Double result;
 
     @Column(name = "LEFTHAND")
     private Integer leftHand;
